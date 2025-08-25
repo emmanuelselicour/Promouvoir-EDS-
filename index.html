@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devenez Promoteur EDS</title>
+    <link rel="icon" href="https://files.catbox.moe/ioqzaq.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Bubbles Animation */
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0);
+            }
+            50% {
+                transform: translate(100px, -500px);
+            }
+            100% {
+                bottom: 1080px;
+                transform: translateX(-200px);
+            }
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        .logo span {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Why Section */
+        .why-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px 0;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .why-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reason {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .reason-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .reason h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .privacy-note {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .privacy-note h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        /* Thank You Message */
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .thank-you-message h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-message p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #fff;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+
+        .socials {
+            margin-bottom: 20px;
+        }
+
+        .socials a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo span {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                padding: 40px 20px;
+            }
+            
+            .reasons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bubbles Animation -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://files.catbox.moe/ioqzaq.jpg" alt="EDS Logo">
+                <span>EDS</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Devenez Promoteur EDS</h1>
+            <p>Rejoignez notre équipe de promoteurs et participez à la révolution des services numériques en Haïti. Ensemble, développons l'économie digitale!</p>
+            <a href="#form" class="btn">Devenir Promoteur</a>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-section">
+        <div class="container">
+            <h2>Pourquoi devenir promoteur EDS?</h2>
+            <div class="reasons">
+                <div class="reason">
+                    <div class="reason-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Revenus attractifs</h3>
+                    <p>Bénéficiez de commissions généreuses sur chaque vente que vous réalisez. Plus vous promouvez, plus vous gagnez!</p>
+                </div>
+                
+                <div class="reason">
+                    <div class="reason-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Croissance personnelle</h3>
+                    <p>Développez vos compétences en marketing digital, en vente et en relation client. Formez-vous aux services digitaux de demain.</p>
+                </div>
+                
+                <div class="reason">
+                    <div class="reason-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Réseau professionnel</h3>
+                    <p>Intégrez une communauté dynamique de promoteurs et bénéficiez du soutien de l'équipe EDS pour développer votre activité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <h2>Postuler pour devenir promoteur</h2>
+            
+            <div class="privacy-note">
+                <h3>Pourquoi nous collectons vos informations?</h3>
+                <p>Nous recueillons vos coordonnées pour pouvoir vous contacter concernant votre candidature, vous envoyer les documents nécessaires et vous tenir informé des opportunités de promotion. Vos données sont traitées avec la plus grande confidentialité et ne seront jamais partagées avec des tiers sans votre consentement.</p>
+            </div>
+            
+            <form name="promoteurs-eds" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+                <input type="hidden" name="form-name" value="promoteurs-eds">
+                <p class="hidden">
+                    <label>Ne remplissez pas ce champ si vous êtes humain: <input name="bot-field" /></label>
+                </p>
+                
+                <div class="form-group">
+                    <label for="nom">Nom *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prenom">Prénom *</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone *</label>
+                    <input type="tel" id="telephone" name="telephone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="photo">Votre photo (optionnel)</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="motivation">Pourquoi souhaitez-vous devenir promoteur EDS? *</label>
+                    <textarea id="motivation" name="motivation" required></textarea>
+                </div>
+                
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn">Soumettre ma candidature</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Thank You Message -->
+    <section class="thank-you-message" id="thank-you">
+        <div class="container">
+            <h2>Merci pour votre soumission!</h2>
+            <p>Votre candidature pour devenir promoteur EDS a été reçue avec succès.</p>
+            <p>Nous examinerons attentivement votre profil et vous contacterons dans les plus brefs délais.</p>
+            <p>Merci de votre intérêt pour EDS et de votre volonté à nous aider à développer nos services!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2023 EDS - Évolution Digitale Services. Tous droits réservés.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>Site codé par True-Manno</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create bubbles
+        function createBubbles() {
+            const bubblesContainer = document.getElementById('bubbles');
+            const bubblesCount = 10;
+            
+            for (let i = 0; i < bubblesCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // Random properties
+                const size = Math.random() * 30 + 10;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${posX}%`;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+        
+        // Handle form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            createBubbles();
+            
+            const form = document.querySelector('form');
+            const thankYouMessage = document.getElementById('thank-you');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    let valid = true;
+                    const requiredFields = form.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            valid = false;
+                            field.style.borderColor = 'red';
+                        } else {
+                            field.style.borderColor = '#ddd';
+                        }
+                    });
+                    
+                    if (!valid) {
+                        alert('Veuillez remplir tous les champs obligatoires.');
+                        return;
+                    }
+                    
+                    // Create FormData object
+                    const formData = new FormData(this);
+                    
+                    // Submit form via fetch
+                    fetch("/", {
+                        method: "POST",
+                        body: formData,
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show thank you message
+                            thankYouMessage.style.display = 'block';
+                            form.style.display = 'none';
+                            
+                            // Scroll to thank you message
+                            thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            alert("Une erreur s'est produite. Veuillez réessayer.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Une erreur s'est produite. Veuillez réessayer.");
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
